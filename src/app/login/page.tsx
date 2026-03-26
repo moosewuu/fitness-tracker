@@ -39,42 +39,54 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Background grid effect */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: "linear-gradient(rgba(139,92,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.3) 1px, transparent 1px)",
+        backgroundSize: "40px 40px",
+      }} />
+
+      {/* Glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, #8B5CF6, transparent)" }} />
+      <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full opacity-10 blur-3xl" style={{ background: "radial-gradient(circle, #22D3EE, transparent)" }} />
+
+      <div className="w-full max-w-sm relative z-10">
         <div className="text-center mb-8">
-          <div className="text-4xl mb-2">💪</div>
-          <h1 className="text-2xl font-extrabold text-white">Fitness Tracker</h1>
-          <p className="text-sm text-zinc-500 mt-1">Track your gains. Stay consistent.</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 glow-violet" style={{ background: "linear-gradient(135deg, #8B5CF6, #6D28D9)" }}>
+            <span className="text-2xl">⚡</span>
+          </div>
+          <h1 className="font-display text-3xl font-bold text-white text-glow-violet">THE PERFORMANCE LAB</h1>
+          <p className="font-body text-xs text-white/30 mt-2 uppercase tracking-[0.2em]">Athlete Command Center</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-[#141414] rounded-2xl p-6 border border-zinc-800">
+        <form onSubmit={handleSubmit} className="glass-card p-6">
           <div className="mb-4">
-            <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Email</label>
+            <label className="block text-[10px] font-semibold text-white/40 uppercase tracking-[0.15em] mb-2 font-body">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-[#1c1c1c] border border-zinc-700 rounded-lg text-white text-sm px-3 py-2.5 outline-none focus:border-purple-500 transition-colors"
+              className="hud-input text-left"
               placeholder="you@email.com"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Password</label>
+          <div className="mb-5">
+            <label className="block text-[10px] font-semibold text-white/40 uppercase tracking-[0.15em] mb-2 font-body">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full bg-[#1c1c1c] border border-zinc-700 rounded-lg text-white text-sm px-3 py-2.5 outline-none focus:border-purple-500 transition-colors"
+              className="hud-input text-left"
               placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <div className="mb-4 text-xs text-red-400 bg-red-900/20 border border-red-900/30 rounded-lg p-2.5">
+            <div className="mb-4 text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 rounded-lg p-2.5 font-body">
               {error}
             </div>
           )}
@@ -82,17 +94,18 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold text-sm rounded-lg py-2.5 transition-colors"
+            className="w-full py-3 rounded-lg font-display font-bold text-sm uppercase tracking-wider transition-all duration-200 disabled:opacity-40 glow-violet-sm"
+            style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)" }}
           >
-            {loading ? "..." : isSignUp ? "Sign Up" : "Log In"}
+            {loading ? "..." : isSignUp ? "CREATE ACCOUNT" : "INITIATE SESSION"}
           </button>
 
           <button
             type="button"
             onClick={() => { setIsSignUp(!isSignUp); setError(""); }}
-            className="w-full mt-3 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+            className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors font-body"
           >
-            {isSignUp ? "Already have an account? Log in" : "Need an account? Sign up"}
+            {isSignUp ? "Already registered? Log in" : "New operator? Create account"}
           </button>
         </form>
       </div>

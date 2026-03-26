@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Fitness Tracker",
-  description: "Track your workouts, macros, and progress",
+  title: "The Performance Lab",
+  description: "Your cyberpunk athlete HUD — track output, vitals, and recovery",
 };
 
 export default function RootLayout({
@@ -19,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable}`}>
-      <body className="bg-[#0a0a0a] text-white antialiased" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+      <body className="bg-black text-white antialiased" style={{ fontFamily: "var(--font-inter), sans-serif" }}>
         {children}
       </body>
     </html>

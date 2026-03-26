@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-obsidian: #000000;
+  --color-obsidian-light: #0F172A;
+  --color-surface: rgba(15, 23, 42, 0.6);
+  --color-surface-solid: #0F172A;
+  --color-violet-primary: #8B5CF6;
+  --color-violet-dim: rgba(139, 92, 246, 0.15);
+  --color-violet-glow: rgba(139, 92, 246, 0.4);
+  --color-cyber-lime: #22D3EE;
+  --color-cyber-green: #10B981;
+  --color-neon-red: #F43F5E;
+  --color-neon-orange: #F97316;
+  --color-neon-amber: #F59E0B;
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-border-bright: rgba(255, 255, 255, 0.15);
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -21,4 +38,87 @@ input[type="number"] {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+/* Neon glow effects */
+.glow-violet {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+.glow-violet-sm {
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.25);
+}
+
+.glow-lime {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3), 0 0 40px rgba(34, 211, 238, 0.1);
+}
+
+.glow-green {
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.text-glow-violet {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+.text-glow-lime {
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+/* HUD-style input */
+.hud-input {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 10px;
+  width: 100%;
+  outline: none;
+  font-family: var(--font-space-grotesk), monospace;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.hud-input:focus {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.15);
+}
+
+.hud-input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Font utilities */
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Pulse animation for loading dots */
+@keyframes hud-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.animate-hud-pulse {
+  animation: hud-pulse 1.2s ease-in-out infinite;
+}
+
+/* Gradient bar animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
